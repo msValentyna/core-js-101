@@ -327,9 +327,10 @@ function getPositivesCount(arr) {
  *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  // return arr.sort((prev, next) => prev - next);
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  const correctOrder = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  return arr.sort((prev, next) => correctOrder.indexOf(prev) - correctOrder.indexOf(next));
+  // throw new Error('Not implemented');
 }
 // console.log([ 'nine','eight','nine','eight'] )
 
@@ -429,9 +430,11 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  // throw new Error('Not implemented');
+  return arr.sort((p, n) => p.country.localeCompare(n.country) || p.city.localeCompare(n.city));
 }
+
 
 /**
  * Creates an identity matrix of the specified size
