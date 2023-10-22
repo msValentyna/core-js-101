@@ -238,8 +238,17 @@ function toArrayOfSquares(arr) {
  *   [ 0, 0, 0, 0, 0]         => [ 0, 0, 0, 0, 0]
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
-function getMovingSum(/* arr */) {
-  throw new Error('Not implemented');
+function getMovingSum(arr) {
+  // throw new Error('Not implemented');
+  const result = arr.reduce((res, current, index) => {
+    if (index === 0) {
+      res.push(current);
+    } else {
+      res.push(res[index - 1] + current);
+    }
+    return res;
+  }, []);
+  return result;
 }
 
 /**
@@ -544,9 +553,9 @@ function group(/* array, keySelector, valueSelector */) {
  *   [[1, 2], [3, 4], [5, 6]], (x) => x     =>   [ 1, 2, 3, 4, 5, 6 ]
  *   ['one','two','three'], (x) => x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
-function selectMany(/* arr, childrenSelector */) {
-  // return arr.flat();
-  throw new Error('Not implemented');
+function selectMany(arr, childrenSelector) {
+  return arr.flatMap(childrenSelector);
+  // throw new Error('Not implemented');
 }
 
 
@@ -564,7 +573,14 @@ function selectMany(/* arr, childrenSelector */) {
  */
 function getElementByIndexes(/* arr, indexes */) {
   throw new Error('Not implemented');
+  // let result = arr;
+  // for (const index of indexes) {
+  //   result = result[index];
+  // }
+  // return result;
 }
+
+// console.log(getElementByIndexes([[[1, 2, 3]]], [0, 0, 1]))
 
 
 /**
@@ -585,9 +601,27 @@ function getElementByIndexes(/* arr, indexes */) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  // throw new Error('Not implemented');
+  const head = arr.slice(0, Math.floor(arr.length / 2));
+  const tail = arr.slice(Math.ceil(arr.length / 2), arr.length);
+  const middle = arr.length % 2 !== 0 ? arr[Math.floor(arr.length / 2)] : [];
+  // for (let i = 0; i < Math.floor(arr.length / 2); i += 1) {
+  //   head.push(arr[i]);
+  // }
+  // console.log(head);
+  // for (let i = Math.ceil(arr.length / 2); i < arr.length; i += 1) {
+  //   tail.push(arr[i]);
+  // }
+  // console.log(tail);
+  // if (arr.length % 2 !== 0) {
+  //   middle.push(arr[Math.floor(arr.length / 2)]);
+  // }
+  // console.log(middle);
+  const result = tail.concat(middle).concat(head);
+  return result;
 }
+// console.log(swapHeadAndTail([1, 2, 3, 4, 5, 6, 7, 8]));
 
 
 module.exports = {
