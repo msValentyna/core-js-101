@@ -204,10 +204,15 @@ function getTail(arr, n) {
  *    +'20,21,22,23,24\n'
  *    +'30,31,32,33,34'
  */
-function toCsvText(/* arr */) {
-  throw new Error('Not implemented');
+function toCsvText(arr) {
+  return arr.reduce((res, cur) => (`${res}${cur.join(',')}\n`), '').trim();
 }
-
+// console.log(toCsvText([
+//   [0, 1, 2, 3, 4],
+//   [10, 11, 12, 13, 14],
+//   [20, 21, 22, 23, 24],
+//   [30, -31, 32, -33, 34],
+// ]));
 /**
  * Transforms the numeric array into the according array of squares:
  *   f(x) = x * x
@@ -281,9 +286,11 @@ function getSecondItems(arr) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  // throw new Error('Not implemented');
+  return arr.reduce((res, cur, i) => res.concat((Array(i + 1).fill(cur))), []);
 }
+// console.log(propagateItemsByPositionIndex([1, 2, 3, 4, 5]));
 
 
 /**
@@ -464,7 +471,7 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]
  */
 function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -478,11 +485,11 @@ function getIdentityMatrix(/* n */) {
  *     1, 5  => [ 1, 2, 3, 4, 5 ]
  *    -2, 2  => [ -2, -1, 0, 1, 2 ]
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
- *     3, 3   => [ 3 ]npm test
+ *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  // return Array.from({ length: end }, (_, i) => start < 0 ? i - start : i + start);
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  return Array.from({ length: end - start + 1 }, (_, i) => i + start);
+  // throw new Error('Not implemented');
 }
 
 // console.log(getIntervalArray(3, 3));
